@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Pengurus;
+use App\Http\Controllers\BeritaController;
 
 Route::get('/', function () {
     // Ambil semua pengurus yang aktif dari database
@@ -21,5 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Rute untuk melihat detail berita berdasarkan ID
+Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
 
 require __DIR__.'/auth.php';
